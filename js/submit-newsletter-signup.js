@@ -1,7 +1,7 @@
-function setUpBookingForm() {
-  const form = document.getElementById("booking-form");
+function setUpNewsletterSignup() {
+  const form = document.getElementById("newsletter-signup-form");
   const submitBtn = form.querySelector('button[type="submit"]');
-  const formAlert = document.getElementById("booking-form-alert");
+  const formAlert = document.getElementById("newsletter-signup-form-alert");
 
   const handleFormError = () => {
     formAlert.textContent =
@@ -14,7 +14,7 @@ function setUpBookingForm() {
     e.preventDefault();
 
     const formData = new FormData(form);
-    formData.append("access_key", "024d9faf-d757-4519-963b-2a1c36dc4701");
+    formData.append("access_key", "3c5ea981-21ec-4398-b264-47a50ffad2a8");
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
@@ -36,7 +36,7 @@ function setUpBookingForm() {
 
       if (response.ok) {
         formAlert.textContent =
-          "Your booking inquiry has been submitted successfully. We will review your request and get back to you soon!";
+          "You've been signed up to our newsletter successfully.";
         formAlert.hidden = false;
         form.reset();
       } else {
@@ -51,4 +51,4 @@ function setUpBookingForm() {
   });
 }
 
-setUpBookingForm();
+setUpNewsletterSignup();
