@@ -1,5 +1,3 @@
-import { $ } from "jquery";
-
 // Sticky Plugin v1.0.3 for jQuery
 // =============
 // Author: Anthony Garand
