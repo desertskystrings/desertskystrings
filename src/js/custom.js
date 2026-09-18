@@ -1,4 +1,5 @@
-
+import { $ } from "jquery";
+  
   (function ($) {
   
   "use strict";
