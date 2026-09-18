@@ -1,4 +1,3 @@
-import { $ } from "jquery";
 //jquery-click-scroll
 //by syamsul'isul' Arifin
 
