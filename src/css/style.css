@@ -438,7 +438,7 @@ strong {
 }
 
 .navbar {
-  background: transparent;
+  background: var(--secondary-color);
   z-index: 99;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -1206,7 +1206,7 @@ strong {
 
   .hero-section {
     position: relative;
-    top: 82px;
+    top: 0;
     margin-bottom: 82px;
   }
 
