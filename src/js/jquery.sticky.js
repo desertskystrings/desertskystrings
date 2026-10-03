@@ -1,4 +1,4 @@
-import { $ } from "jquery";
+import { $, jQuery } from "jquery";
 
 // Sticky Plugin v1.0.3 for jQuery
 // =============
@@ -11,6 +11,7 @@ import { $ } from "jquery";
 // Description: Makes an element on the page stick on the screen as you scroll
 //              It will only set the 'top' and 'position' of your element, you
 //              might need to adjust the width in some cases.
+
 
 (function($) {
     var slice = Array.prototype.slice; // save ref to original slice()
