@@ -1,4 +1,4 @@
-import { $ } from "jquery";
+import { $, jQuery } from "jquery";
 
 // Sticky Plugin v1.0.3 for jQuery
 // =============
