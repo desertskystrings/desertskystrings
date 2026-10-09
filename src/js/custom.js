@@ -1,12 +1,14 @@
 import { $ } from "jquery";
+import { Collapse } from "bootstrap";
   
-  (function ($) {
   
   "use strict";
 
     // MENU
     $('.navbar-collapse a').on('click',function(){
-      $(".navbar-collapse").collapse('hide');
+      const navbar = document.querySelector('.navbar-collapse');
+      const bsCollapse = new Collapse(navbar, {toggle:false});
+      bsCollapse.hide();
     });
     
     // CUSTOM LINK
@@ -29,6 +31,5 @@ import { $ } from "jquery";
       }
     });
   
-  })(window.jQuery);
 
 
