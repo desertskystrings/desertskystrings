@@ -8,3 +8,9 @@ import * as custom from "./js/custom.js";
 import * as submitBookingForm from "./js/submit-booking-form.js"
 import * as submitNewsletterSignup from "./js/submit-newsletter-signup.js"
 import * as submitMemberSignup from "./js/submit-member-signup.js"
+
+import displayShows from "./js/displayEvents.js"
+
+document.addEventListener("DOMContentLoaded", () => {
+    displayShows()
+});
