@@ -1,6 +1,8 @@
 import * as contentful from "contentful";
-import testEvents from "./dev/testEvents.js"
-import devRecentEvents from "./dev/testRecentEvents.js"
+import testEvents from "../dev/testEvents.js"
+import testOrgInfo from "../dev/testOrgInfo.js"
+import devRecentEvents from "../dev/testRecentEvents.js"
+import { mapOrgInfo, mapEventsToShows, getassetFieldUrl } from "./mapResponses.js"
 
 let defaultImageUrl = ""
 
@@ -10,23 +12,12 @@ const client = contentful.createClient({
   environment: CONFIG_CONTENTFUL_ENVIRONMENT,
 });
 
-
-function getassetFieldUrl(assetField) {
-  return "https:" + assetField.fields.file.url;
-}
-
 async function getDefaultImageURL() {
   if (defaultImageUrl) {
     return defaultImageUrl;
   }
   const response = await client.getAsset(CONFIG_CONTENTFUL_DEFAULT_EVENT_IMG_ID);
   return getassetFieldUrl(response)
-}
-
-function getAssetFromAssetList(assetField, assets) {
-  const assetId = assetField.sys.id;
-  const asset = assets.find((asset) => asset.sys.id === assetId);
-  return asset ? getassetFieldUrl(asset) : "";
 }
 
 async function getUpcomingShows() {
@@ -43,7 +34,6 @@ async function getUpcomingShows() {
     })
 
   const fallbackImgUrl = getDefaultImageURL();
-
 
   const [eventsResponse, fallbackImgUrlResponse] = await Promise.all([events, fallbackImgUrl])
     .catch((error) => {
@@ -71,7 +61,6 @@ async function getRecentShows() {
 
   const fallbackImgUrl = getDefaultImageURL();
 
-
   const [recentEventsResponse, fallbackImgUrlResponse] = await Promise.all([recentEvents, fallbackImgUrl])
     .catch((error) => {
       throw error;
@@ -83,24 +72,16 @@ async function getRecentShows() {
   );
 }
 
-function mapEventsToShows(events, assets, defaultAssetUrl = defaultImageUrl) {
-  const defaultEventLink = "https://www.instagram.com/desertskystrings";
-  return events.map((entry) => {
-    return {
-      title: entry.fields.title ?? "",
-      startDateTime: entry.fields.startDateTime ?? "",
-      endDateTime: entry.fields.endDateTime ?? "",
-      locationName: entry.fields.locationName ?? "",
-      locationCity: entry.fields.locationCity ?? "",
-      locationState: entry.fields.locationState ?? "",
-      imageUrl: entry.fields.image ?
-        getAssetFromAssetList(entry.fields.image, assets) :
-        defaultAssetUrl,
-      link: entry.fields.link ?? defaultEventLink,
-      description: entry.fields.description ?? "",
-      ticketPrice: entry.fields.ticketPrice ?? ""
-    };
-  });
+async function getOrgInfo() {
+  if (CONFIG_CONTENTFUL_ENVIRONMENT !== "master") {
+    return testOrgInfo;
+  }
+  try {
+    const orgInfo = await client.getEntry(CONFIG_CMS_ORG_ID);
+    return mapOrgInfo(orgInfo)
+  } catch (error) {
+    throw error
+  }
 }
 
-export { getUpcomingShows, getRecentShows }
+export { getUpcomingShows, getRecentShows, getOrgInfo }

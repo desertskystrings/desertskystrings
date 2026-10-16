@@ -66,12 +66,12 @@ module.exports = (env, argv) => {
       CONFIG_CONTENTFUL_ENVIRONMENT: JSON.stringify(
         process.env.CONFIG_CONTENTFUL_ENVIRONMENT,
       ),
-      CONFIG_CMS_BAND_ID: JSON.stringify(
-        process.env.CONFIG_CMS_BAND_ID
+      CONFIG_CMS_ORG_ID: JSON.stringify(
+        process.env.CONFIG_CMS_ORG_ID
       ),
       CONFIG_CONTENTFUL_DEFAULT_EVENT_IMG_ID: JSON.stringify(
         process.env.CONFIG_CONTENTFUL_DEFAULT_EVENT_IMG_ID
-      )
+      ),
     }),
   );
   config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());

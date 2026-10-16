@@ -6,7 +6,7 @@ import {
   removeElById,
   setHref,
 } from "../dom-utils.js";
-import { getUpcomingShows } from "../contentful.js";
+import { getUpcomingShows } from "../contentful/contentful.js";
 
 import createEventRow from "./createEventRow.js";
 
