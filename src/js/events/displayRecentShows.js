@@ -1,4 +1,10 @@
-import { getElementById, addChild, setTextContent, removeElById } from "../dom-utils.js"
+import {
+    createEl,
+    getElementById,
+    addChild,
+    setTextContent,
+    removeElById
+} from "../dom-utils.js"
 
 import { getRecentShows } from "../contentful.js";
 
