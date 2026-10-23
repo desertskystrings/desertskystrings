@@ -10,8 +10,10 @@ import * as submitNewsletterSignup from "./js/submit-newsletter-signup.js"
 import * as submitMemberSignup from "./js/submit-member-signup.js"
 import displayUpcomingEvents from "./js/events/displayUpcomingEvents.js"
 import displayRecentEvents from "./js/events/displayRecentShows.js"
+import displayOrgInfo from "./js/organizaiton/displayOrgInfo.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+    displayOrgInfo()
     displayUpcomingEvents()
     displayRecentEvents()
 });

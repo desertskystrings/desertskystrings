@@ -1,4 +1,5 @@
 // DOM utils
+import DOMPurify from 'dompurify';
 
 function createEl(localName, textContent = "", id = "") {
   const element = document.createElement(localName);
@@ -73,7 +74,22 @@ function removeElById(id) {
   }
 }
 
+function cleanHtmlString(htmlString = "") {
+  const cleanHtml = DOMPurify.sanitize(htmlString, { USE_PROFILES: { html: true } });
+  return cleanHtml;
+}
+
+function safeSetInnerHtml(el, htmlString) {
+  if (!el) {
+    return;
+  }
+
+  el.innerHTML = cleanHtmlString(htmlString);
+}
+
 export {
+  safeSetInnerHtml,
+  cleanHtmlString,
   createEl,
   setTextContent,
   getElementById,
