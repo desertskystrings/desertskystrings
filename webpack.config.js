@@ -67,8 +67,7 @@ module.exports = (env, argv) => {
       CONFIG_CMS_BAND_ID: JSON.stringify(process.env.CONFIG_CMS_BAND_ID),
       CONFIG_CONTENTFUL_DEFAULT_EVENT_IMG_ID: JSON.stringify(
         process.env.CONFIG_CONTENTFUL_DEFAULT_EVENT_IMG_ID
-      ),
-      DSS_MODE: JSON.stringify(env.production ? "production" : "development")
+      )
     }),
   );
   config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());

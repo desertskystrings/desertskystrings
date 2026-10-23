@@ -31,7 +31,7 @@ function getAssetFromAssetList(assetField, assets) {
 
 async function getUpcomingShows() {
 
-  if (DSS_MODE !== "production") {
+  if (CONFIG_CONTENTFUL_ENVIRONMENT !== "master") {
     return testEvents;
   }
   const events = client
@@ -57,7 +57,7 @@ async function getUpcomingShows() {
 }
 
 async function getRecentShows() {
-  if (DSS_MODE !== "production") {
+  if (CONFIG_CONTENTFUL_ENVIRONMENT !== "master") {
     return devRecentEvents;
   }
 
