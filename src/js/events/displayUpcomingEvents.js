@@ -19,7 +19,7 @@ async function displayUpcomingEvents() {
       displayNoUpcomingShowsMsg()
     }
   } catch (error) {
-    displayNoUpcomingShowsMsg
+    displayErrorMessage()
   } finally {
     removeElById("upcomingLoading");
   }
@@ -46,27 +46,27 @@ function displayShowRow(show, sectionEl) {
 }
 
 function displayNoUpcomingShowsMsg() {
-  const recentShowsSection = getElementById("recentShowsSection");
+  const upcomingShowsSection = getElementById("upcomingShowsSection");
   const msgEl = createNoUpcomingShowsMsg();
-  addChild(recentShowsSection, msgEl);
+  addChild(upcomingShowsSection, msgEl);
 }
 
 function createNoUpcomingShowsMsg() {
-  const noRecentShowsMsgEl = createEl("p");
-  const msg = "There have been no recent shows."
-  setTextContent(noRecentShowsMsgEl, msg)
-  return noRecentShowsMsgEl;
+  const noUpcomingShowsMsg = createEl("p");
+  const msg = "There are currently no upcoming shows. Sign up for our email list for updates."
+  setTextContent(noUpcomingShowsMsg, msg)
+  return noUpcomingShowsMsg;
 }
 
 function displayErrorMessage() {
-  const recentShowsSection = getElementById("recentShowsSection");
+  const recentShowsSection = getElementById("upcomingShowsSection");
   const msgEl = createErrorMsg();
   addChild(recentShowsSection, msgEl);
 }
 
 function createErrorMsg() {
   const errorMessageEl = createEl("p");
-  const msg = "There was an error loading recent shows. Please try again.";
+  const msg = "There was an error loading upcoming shows. Please try again.";
 
   setTextContent(errorMessageEl, msg);
   return errorMessageEl;

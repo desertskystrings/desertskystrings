@@ -41,7 +41,7 @@ async function getUpcomingShows() {
     });
 
   return mapEventsToShows(eventsResponse.items,
-    eventsResponse.includes.Asset,
+    eventsResponse.includes?.Asset,
     fallbackImgUrlResponse
   );
 }
@@ -67,7 +67,7 @@ async function getRecentShows() {
     });
 
   return mapEventsToShows(recentEventsResponse.items,
-    recentEventsResponse.includes.Asset,
+    recentEventsResponse.includes?.Asset,
     fallbackImgUrlResponse
   );
 }
